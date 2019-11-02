@@ -4,9 +4,11 @@ import {storiesOf} from '@storybook/react';
 import {withKnobs} from '@storybook/addon-knobs';
 
 import Welcome from './Welcome';
+import ViewerStory from './ViewerStory';
 
 storiesOf('React SVG Pipeline', module)
   .addDecorator(withKnobs)
   .add('README', () => <Welcome/>)
+  .add('Viewer', () => <ViewerStory/>)
 
 

@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = function (env) {
   const minimize = Boolean(env && env.hasOwnProperty('minimize'))
@@ -33,15 +34,21 @@ module.exports = function (env) {
       extensions: ['.js', '.jsx']
     },
     module: {
-      rules: [{
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ]
-      }]
+      rules: [
+        {
+          test: /\.s?css$/,
+          loader: 'style-loader!css-loader?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader!sass-loader'
+        }
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader'
+            }
+          ]
+        }
+      ]
     },
     optimization: {
       minimize,
