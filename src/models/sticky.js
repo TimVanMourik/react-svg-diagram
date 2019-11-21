@@ -39,9 +39,9 @@ class Sticky extends Model {
 Sticky.modelName = 'Sticky';
 Sticky.fields = {
   title: attr(),
-  content: attr(),
   x: attr(),
   y: attr(),
+  content: attr(),
 };
 
 export default Sticky;

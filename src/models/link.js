@@ -73,16 +73,16 @@ class Link extends Model {
 Link.modelName = 'Link';
 Link.fields = {
   id: attr(),
-  portFrom: fk({
-    to: 'Port',
-    as: 'portFromModel',
-    relatedName: 'outputLinks',
-  }),
-  portTo: fk({
-    to: 'Port',
-    as: 'portToModel',
-    relatedName: 'inputLinks',
-  }),
+  // portFrom: fk({
+  //   to: 'Port',
+  //   as: 'portFromModel',
+  //   relatedName: 'outputLinks',
+  // }),
+  // portTo: fk({
+  //   to: 'Port',
+  //   as: 'portToModel',
+  //   relatedName: 'inputLinks',
+  // }),
 };
 
 export default Link;

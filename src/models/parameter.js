@@ -75,27 +75,13 @@ class Parameter extends Model {
 Parameter.modelName = 'Parameter';
 Parameter.fields = {
   name: attr(),
-  data: attr(), // leaving room for data types here
-  isVisible: attr(),
-  isEnabled: attr(),
-  isIterable: attr(),
-  code: attr(),
-  type: attr(),
   node: fk({
     to: 'Node',
-    as: 'nodeModel',
+    as: 'node',
     relatedName: 'parameters',
   }),
-  input: oneToOne({
-    to: 'Port',
-    as: 'inputModel',
-    relatedName: 'inputParent',
-  }),
-  output: oneToOne({
-    to: 'Port',
-    as: 'outputModel',
-    relatedName: 'outputParent',
-  }),
+  input: attr(),
+  output: attr(),
 };
 
 export default Parameter;
