@@ -6,6 +6,7 @@ import {
   ADD_PARAMETER_TO_NODE,
   CLEAR_DATABASE,
 } from '../actions/actionTypes';
+import { statement } from '@babel/template';
 
 class Port extends Model {
   static reducer(action, Port) {
@@ -56,8 +57,9 @@ class Port extends Model {
         //   Port.withId(portRef.id).delete();
         // });
         break;
+      default:
+        return undefined;
     }
-    return undefined;
   }
 }
 Port.modelName = 'Port';

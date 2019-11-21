@@ -45,12 +45,12 @@ export const addParameterToNode = (parameter, nodeId) => ({
     nodeId,
   },
 });
-export const addToolboxNodes = (toolboxes) => ({
-  type: ADD_TOOLBOX_NODES,
-  payload: {
-    toolboxes,
-  },
-});
+// export const addToolboxNodes = (toolboxes) => ({
+//   type: ADD_TOOLBOX_NODES,
+//   payload: {
+//     toolboxes,
+//   },
+// });
 
 // /// LINKS /////
 export const addLink = (props) => ({

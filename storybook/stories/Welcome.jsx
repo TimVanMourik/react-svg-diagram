@@ -13,7 +13,7 @@ const md = new Remarkable({
 let html = Readme
   html = html.replace(/<!-- BEGIN_SECTION_SKIPPED_ONLINE -->[\w\W]*<!-- END_SECTION_SKIPPED_ONLINE -->/g, '')
   html = md.render(html)
-  html = html.replace(/\.\//g, 'https://github.com/TimVanMourik/react-svg-pipeline/tree/master/')
+  html = html.replace(/\.\//g, 'https://github.com/TimVanMourik/react-svg-diagram/tree/master/')
   html = html.replace(/<a/g, '<a target="_blank" ');
 
 export default function Welcome(){

@@ -11,8 +11,8 @@ module.exports = function (env) {
     },
     output: {
       path: path.join(__dirname, 'build-umd'),
-      filename: `react-svg-pipeline${minimize ? '.min' : ''}.js`,
-      library: "ReactSVGPipeline",
+      filename: `react-svg-diagram${minimize ? '.min' : ''}.js`,
+      library: "ReactSVGDiagram",
       libraryTarget: "umd"
     },
     externals: {

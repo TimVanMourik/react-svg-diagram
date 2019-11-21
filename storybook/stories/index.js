@@ -7,7 +7,7 @@ import Welcome from './Welcome';
 import ViewerStory from './ViewerStory';
 import MethodsStory from './MethodsStory';
 
-storiesOf('React SVG Pipeline', module)
+storiesOf('React SVG Diagram', module)
   .addDecorator(withKnobs)
   .add('README', () => <Welcome/>)
   .add('Viewer', () => <ViewerStory/>)

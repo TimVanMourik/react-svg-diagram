@@ -1,5 +1,5 @@
 import React, {StrictMode, useState, useReducer} from 'react';
-import {ReactSVGPipeline, LayoutReducer} from '../../src/index';
+import {ReactSVGDiagram, LayoutReducer} from '../../src/index';
 
 const ViewerStory = () => {
 
@@ -8,7 +8,7 @@ const ViewerStory = () => {
 
   return (
     <StrictMode>
-      <ReactSVGPipeline
+      <ReactSVGDiagram
         //mandatory:
         width={300}
         height={300}
@@ -21,7 +21,7 @@ const ViewerStory = () => {
         backgroundDefs={<pattern />}
       >
         
-      </ReactSVGPipeline>
+      </ReactSVGDiagram>
     </StrictMode>
   )
 }

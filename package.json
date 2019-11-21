@@ -1,14 +1,14 @@
 {
-  "name": "react-svg-pipeline",
+  "name": "react-svg-diagram",
   "version": "0.0.0",
-  "description": "A react component for building an pipeline diagram as svg elements",
+  "description": "A react component for building an diagram as svg elements",
   "main": "index.js",
   "author": "TimVanMourik",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TimVanMourik/react-svg-pipeline/issues"
+    "url": "https://github.com/TimVanMourik/react-svg-diagram/issues"
   },
-  "homepage": "https://github.com/TimVanMourik/react-svg-pipeline#readme",
+  "homepage": "https://github.com/TimVanMourik/react-svg-diagram#readme",
   "scripts": {
     "start": "run-p storybook:start",
     "build": "run-p clean library:build:commonjs library:build:es library:build:umd library:build:umd_min storybook:build",
@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimVanMourik/react-svg-pipeline.git"
+    "url": "git+https://github.com/TimVanMourik/react-svg-diagram.git"
   },
   "keywords": [
     "react",
     "svg",
-    "pipeline",
+    "diagram",
     "diagram",
     "diagrams",
     "flowchart",
@@ -55,11 +55,11 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/runtime": "^7.5.5",
-    "@storybook/addon-actions": "5.2.5",
-    "@storybook/addon-knobs": "5.2.5",
-    "@storybook/addon-links": "5.2.5",
-    "@storybook/addons": "5.2.5",
-    "@storybook/react": "5.2.5",
+    "@storybook/addon-actions": "5.2.6",
+    "@storybook/addon-knobs": "5.2.6",
+    "@storybook/addon-links": "5.2.6",
+    "@storybook/addons": "5.2.6",
+    "@storybook/react": "5.2.6",
     "@storybook/storybook-deployer": "^2.8.1",
     "@storybook/theming": "^5.1.10",
     "babel-loader": "^8.0.6",

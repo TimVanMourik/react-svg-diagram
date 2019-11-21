@@ -5,8 +5,8 @@ addParameters({
   options: {
     theme: create({
       base: 'light',
-      brandTitle: 'React SVG Pipeline',
-      brandUrl: 'https://github.com/chrvadala/react-svg-pipeline',
+      brandTitle: 'React SVG Diagram',
+      brandUrl: 'https://github.com/TimVanMourik/react-svg-diagram',
     }),
     panelPosition: 'right',
     isToolshown: false,

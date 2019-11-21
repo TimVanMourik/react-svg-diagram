@@ -8,11 +8,11 @@ import {BackgroundDefs, Background} from './components/background';
 import Items from './components/items';
 import {svgElementToFile} from './utils/saveToImage';
 
-const ReactSVGPipeline = forwardRef(({ background, defs, x, y, width, height, layout }, Viewer) => {
+const ReactSVGDiagram = forwardRef(({ background, defs, x, y, width, height, layout }, Viewer) => {
   const svgRef = useRef(null);
   const viewerRef = useRef(null);
 
-  /** ReactSVGPipeline methods **/
+  /** ReactSVGDiagram methods **/
   useImperativeHandle(Viewer, () => ({
 
     saveToFile(format) {
@@ -66,4 +66,4 @@ const ReactSVGPipeline = forwardRef(({ background, defs, x, y, width, height, la
   )
 });
 
-export default ReactSVGPipeline;
+export default ReactSVGDiagram;

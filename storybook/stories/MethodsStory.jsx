@@ -1,5 +1,5 @@
 import React, {useRef, useReducer, StrictMode} from 'react';
-import {ReactSVGPipeline, LayoutReducer} from '../../src/index';
+import {ReactSVGDiagram, LayoutReducer} from '../../src/index';
 import {FORMAT_SVG, FORMAT_PNG} from '../../src/constants';
 import {
   ADD_NODE,
@@ -42,8 +42,8 @@ const MethodsStory = () => {
     <StrictMode>
       <div>
         <button type="button" style={STYLE_BUTTON} name="fit-btn"
-          // onClick={event => viewerRef.saveToFile(FORMAT_SVG)}>.saveToSvg(FORMAT_SVG)
-          onClick={event => {console.info(viewerRef)}}>.saveToSvg(FORMAT_SVG)
+          onClick={event => viewerRef.saveToFile(FORMAT_SVG)}>.saveToSvg(FORMAT_SVG)
+          // onClick={event => {console.info(viewerRef)}}>.saveToSvg(FORMAT_SVG)
         </button>
 
         <button type="button" style={STYLE_BUTTON} name="fit-btn"
@@ -61,7 +61,7 @@ const MethodsStory = () => {
       </div>
       <hr style={HR_BUTTON}/>
 
-      <ReactSVGPipeline
+      <ReactSVGDiagram
         //mandatory:
         x={0}
         y={0}
@@ -77,7 +77,7 @@ const MethodsStory = () => {
       >
 >
         
-      </ReactSVGPipeline>
+      </ReactSVGDiagram>
     </StrictMode>
   )
 }
