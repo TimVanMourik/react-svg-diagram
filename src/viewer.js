@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useRef, forwardRef, useImperativeHandle, Component} from 'react';
 import {ReactSVGPanZoom} from 'react-svg-pan-zoom'
 import {AutoSizer} from 'react-virtualized';
-import {POSITION_RIGHT, ALIGN_CENTER} from 'react-svg-pan-zoom';
+
+import {POSITION_RIGHT, ALIGN_CENTER, TOOL_AUTO} from 'react-svg-pan-zoom';
 
 import {BackgroundDefs, Background} from './components/background';
+import Items from './components/items';
+import {svgElementToFile} from './utils/saveToImage';
 
-const ReactSVGPipeline = ({ background, defs, x, y, width, height }) => {
+const ReactSVGPipeline = forwardRef(({ background, defs, x, y, width, height, layout }, Viewer) => {
+  const svgRef = useRef(null);
+  const viewerRef = useRef(null);
 
+  /** ReactSVGPipeline methods **/
+  useImperativeHandle(Viewer, () => ({
+
+    saveToFile(format) {
+      svgElementToFile(viewerRef, format)
+    }
+  }));
 
   const viewer = (
     <svg
@@ -17,31 +29,41 @@ const ReactSVGPipeline = ({ background, defs, x, y, width, height }) => {
       </defs>
       <g 
         className="view" 
+        ref={svgRef}
       >
         {<Background />}
         <g 
+          className="entities" 
           // ref={(el) => (this.entities = el)}
         >
+          <Items layout={layout}/>
         </g>
       </g>
     </svg>
   );
 
   return (
-    <AutoSizer>
-       {(({width, height}) => width === 0 || height === 0 ? null : (
-         <ReactSVGPanZoom
-           width={width} 
-           height={height}
-           background={"#fff"}
-           miniatureProps={{position: POSITION_RIGHT}}
-           toolbarProps={{position: POSITION_RIGHT, SVGAlignY: ALIGN_CENTER, SVGAlignX: ALIGN_CENTER}}
-         >
-           {viewer}
-         </ReactSVGPanZoom>
-       ))}
-     </AutoSizer>
+    <div style={{width: "100%", height: "100%"}}>
+      <AutoSizer>
+        {(({width, height}) => width === 0 || height === 0 ? null : (
+          <ReactSVGPanZoom
+            ref={viewerRef}
+            tool={TOOL_AUTO}
+            value={{}}
+            width={width} 
+            height={height}
+            //  SVGBackground={styleSheet.primaryLightSecondaryColor}
+            background={"#fff"}
+            miniatureProps={{position: POSITION_RIGHT}}
+            toolbarProps={{position: POSITION_RIGHT, SVGAlignY: ALIGN_CENTER, SVGAlignX: ALIGN_CENTER}}
+            // background={styleSheet.primaryLightSecondaryColor}
+          >
+            {viewer}
+          </ReactSVGPanZoom>
+        ))}
+      </AutoSizer>
+    </div>
   )
-};
+});
 
 export default ReactSVGPipeline;

@@ -40,12 +40,16 @@
     "links"
   ],
   "dependencies": {
+    "pretty": "^2.0.0",
     "prop-types": "^15.7.2",
     "react-redux": "^7.1.1",
     "react-svg-pan-zoom": "github:TimVanMourik/react-svg-pan-zoom#dist",
     "redux": "^4.0.4",
     "redux-orm": "^0.15.1",
-    "transformation-matrix": "^2.1.0"
+    "save-file": "^2.3.1",
+    "save-svg-as-png": "^1.4.14",
+    "transformation-matrix": "^2.1.0",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
