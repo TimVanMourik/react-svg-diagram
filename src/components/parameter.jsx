@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Port from '../containers/port';
+import Port from './port';
 
 import "../scss/unselectable.scss";
 
-const PortPair = ({name, input, output, x, y, width, id}) => (
+const Parameter = ({name, input, output, x = 0, y, width, id}) => (
   <>
     <text 
       className="noselect"
@@ -20,4 +20,4 @@ const PortPair = ({name, input, output, x, y, width, id}) => (
   </>
 );
 
-export default PortPair;
+export default Parameter;

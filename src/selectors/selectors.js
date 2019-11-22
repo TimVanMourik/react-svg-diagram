@@ -4,30 +4,19 @@ import orm from '../models';
 
 
 export const selectStickies = createSelector(orm.Sticky);
-export const selectNodes = createSelector(orm.Sticky);
-export const selectLinks = createSelector(orm.Sticky);
+export const selectNodesWithPorts = createSelector(orm, (session) => session
+  .Node
+  .all()
+  .toModelArray()
+  .map((node) => ({...node.ref, ports: node.ports.toRefArray()}))
+);
+export const selectLinks = createSelector(orm.Link);
 
 export const nodes = createSelector(
     orm,
     (state) => state.orm,
     (session) => {
       return session.Node.all().toRefArray();
-    }
-);
-
-export const nodesWithParameters = createSelector(
-    orm,
-    (state) => state.orm,
-    (session) => {
-      return session.Node.all()
-          .toModelArray()
-          .map((node) => {
-            const parameters = session.Node.withId(node.id).parameters;
-            return {
-              ...node.ref,
-              parameters: parameters && parameters.toRefArray(),
-            };
-          });
     }
 );
 

@@ -49,8 +49,8 @@ const Port = (props) => {
 
   return (
     <g
-      onMouseEnter={() => hoverPort(id, type)} 
-      onMouseLeave={() => hoverPort(null)}
+      onMouseEnter={() => {if(!hoverPort) return; hoverPort(id, type)}} 
+      onMouseLeave={() => {if(!hoverPort) return; hoverPort(null)}}
       onMouseDown={() => startDrag()}
       onMouseUp={() => endDrag()}
       onMouseMove={(event) => dragging && drag(event)}

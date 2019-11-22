@@ -7,16 +7,10 @@ import "../scss/unselectable.scss";
 
 const Node = (props) => {
   
-  const {
-    id,
-    name,
-    x,
-    y,
+  const {id, name, x, y, width, colour,
     scale,
-    width,
-    colour,
-    selectedNodes,
-    parameters,
+    // selectedNodes,
+    ports,
     updateNode,
     clickItem 
   } = props;
@@ -29,6 +23,7 @@ const Node = (props) => {
   const drag = (event) => {
     setDraggingX(xDragging +  event.movementX / (scale || 1));
     setDraggingY(yDragging +  event.movementY / (scale || 1));
+    if(!updateNode) return
     updateNode(id, {x: xDragging, y: yDragging})
   }
 
@@ -39,26 +34,20 @@ const Node = (props) => {
   }
   const endDrag = () => {
     setDragging(false);
+    if(!updateNode) return
     updateNode(id, {x: xDragging, y: yDragging})
   }
 
-  const parameterBlock = [];
-  let dy = 54;
-  parameters &&
-    parameters
-        .filter((parameter) => parameter.isVisible === true)
-        .forEach((parameter) => {
-          parameterBlock.push(
-              <Parameter
-                {...parameter}
-                key={parameter.id}
-                width={width}
-                x={0}
-                y={dy}
-              />
-          );
-          dy += 24;
-        });
+  const initialHeight = 50;
+  const portHeight = 25;
+  const portBlock = ports.length === 0 ? null : ports.map((port, index) => (
+    <Parameter
+      {...port}
+      key={port.id}
+      width={width}
+      y={initialHeight + index * portHeight}
+    />
+  ));
 
   return (
     <g 
@@ -75,12 +64,13 @@ const Node = (props) => {
         rx={6}
         ry={6}
         width={`${width}px`}
-        height={dy}
-        filter={
-          selectedNodes && selectedNodes.includes(id)
-            ? 'url(#selection-glow)'
-            : ''
-        }
+        height={initialHeight + portHeight * (ports && ports.length)}
+        filter={hovered ? "url(#selection-glow)": ""}
+        // filter={
+        //   selectedNodes && selectedNodes.includes(id)
+        //     ? 'url(#selection-glow)'
+        //     : ''
+        // }
       />
       <text
         className="noselect"
@@ -92,8 +82,8 @@ const Node = (props) => {
       >
         {name}
       </text>
-      {parameterBlock}
-      {hovered && <Tooltip parameters={parameters} />}
+      {portBlock}
+      {/* {hovered && <Tooltip ports={ports} />} */}
     </g>
   );
 }

@@ -6,7 +6,7 @@ import {wrap} from '../utils/wordWrap';
 import "../scss/unselectable.scss";
 
 const Sticky = (props) => {
-  const {title, content, x, y, scale, id} = props;
+  const {name, content, x, y, scale, id} = props;
   const {clickItem, updateSticky} = props;
 
   const [dragging, setDragging] = useState(false);
@@ -79,7 +79,7 @@ const Sticky = (props) => {
           x={80}
           y={90}
         >
-          {truncateString(title, 10)}
+          {truncateString(name, 10)}
         </text>
         <text
           className="noselect"

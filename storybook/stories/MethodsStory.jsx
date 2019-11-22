@@ -1,5 +1,6 @@
 import React, {useRef, useReducer, StrictMode} from 'react';
 import { LoremIpsum } from "lorem-ipsum";
+import {v4} from 'uuid';
 
 import {ReactSVGDiagram, LayoutReducer} from '../../src/index';
 import {FORMAT_SVG, FORMAT_PNG} from '../../src/constants';
@@ -28,15 +29,47 @@ const lorem = new LoremIpsum({
   wordsPerSentence: { max: 16, min: 4 }
 });
 
-const randomNodePayload = () => ({
-  title: lorem.generateWords(1),
-  x: Math.floor(Math.random() * 800),
-  y: Math.floor(Math.random() * 800),
-  colour: '#BCD'
-});
+function getRandomColor() {
+  var hex = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+const randomPortPayload = (nodeId) => ({
+  id: v4(),
+  node: nodeId,
+  input: Math.random() >= 0.5,
+  output: Math.random() >= 0.5,
+  name: lorem.generateWords(1),
+})
+
+const randomPortsPayload = (numberOfPorts, nodeId) => {
+  const ports = [];
+  for(let i = 0; i < numberOfPorts; ++i) {
+    ports.push(randomPortPayload(nodeId))
+  }
+  return ports;
+}
+
+const randomNodePayload = () => {
+  const numberOfPorts = Math.floor(Math.random() * 8) + 1;
+  const id = v4();
+  return ({
+    id,
+    name: lorem.generateWords(1),
+    x: Math.floor(Math.random() * 800),
+    y: Math.floor(Math.random() * 800),
+    colour: getRandomColor(),
+    ports: randomPortsPayload(numberOfPorts, id),
+  });
+}
 
 const randomStickyPayload = () => ({
-  title: lorem.generateWords(1),
+  id: v4(),
+  name: lorem.generateWords(1),
   content: lorem.generateSentences(2),
   x: Math.floor(Math.random() * 600),
   y: Math.floor(Math.random() * 600),

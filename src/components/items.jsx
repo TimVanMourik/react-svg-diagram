@@ -4,13 +4,13 @@ import Node from './node';
 import Link from './link';
 import Sticky from './sticky';
 
-import {selectStickies, selectNodes, selectLinks} from '../selectors/selectors';
+import {selectStickies, selectNodesWithPorts, selectLinks} from '../selectors/selectors';
 
 const Items = ({layout}) => {
 
   if(!layout) return null;
 
-  const nodes = selectNodes(layout);
+  const nodes = selectNodesWithPorts(layout);
   const nodesToRender = nodes && nodes.map((node) => (
     <Node {...node} key={node.id} />
   ));

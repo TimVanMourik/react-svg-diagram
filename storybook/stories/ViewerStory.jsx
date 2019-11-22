@@ -1,10 +1,9 @@
-import React, {StrictMode, useState, useReducer} from 'react';
+import React, {StrictMode, useReducer} from 'react';
 import {ReactSVGDiagram, LayoutReducer} from '../../src/index';
 
 const ViewerStory = () => {
 
   const [layoutState, dispatch] = useReducer(LayoutReducer);
-
 
   return (
     <StrictMode>

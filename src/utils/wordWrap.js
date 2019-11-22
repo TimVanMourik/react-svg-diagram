@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function getTextWidth(text, font) {
   // re-use canvas object for better performance

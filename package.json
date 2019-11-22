@@ -43,7 +43,7 @@
     "pretty": "^2.0.0",
     "prop-types": "^15.7.2",
     "react-redux": "^7.1.1",
-    "react-svg-pan-zoom": "github:TimVanMourik/react-svg-pan-zoom#dist",
+    "react-svg-pan-zoom": "^3.5.0",
     "redux": "^4.0.4",
     "redux-orm": "^0.15.1",
     "save-file": "^2.3.1",

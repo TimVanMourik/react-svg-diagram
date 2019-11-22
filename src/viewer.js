@@ -1,5 +1,5 @@
-import React, {useRef, forwardRef, useImperativeHandle, Component} from 'react';
-import {ReactSVGPanZoom} from 'react-svg-pan-zoom'
+import React, {useRef, forwardRef, useImperativeHandle} from 'react';
+import {UncontrolledReactSVGPanZoom} from 'react-svg-pan-zoom'
 import {AutoSizer} from 'react-virtualized';
 
 import {POSITION_RIGHT, ALIGN_CENTER, TOOL_AUTO} from 'react-svg-pan-zoom';
@@ -46,10 +46,10 @@ const ReactSVGDiagram = forwardRef(({ background, defs, x, y, width, height, lay
     <div style={{width: "100%", height: "100%"}}>
       <AutoSizer>
         {(({width, height}) => width === 0 || height === 0 ? null : (
-          <ReactSVGPanZoom
+          <UncontrolledReactSVGPanZoom
             ref={viewerRef}
-            tool={TOOL_AUTO}
-            value={{}}
+            // tool={TOOL_AUTO} onChangeTool={() => {}}
+            // value={{}} onChangeValue={(() => {})}
             width={width} 
             height={height}
             //  SVGBackground={styleSheet.primaryLightSecondaryColor}
@@ -59,7 +59,7 @@ const ReactSVGDiagram = forwardRef(({ background, defs, x, y, width, height, lay
             // background={styleSheet.primaryLightSecondaryColor}
           >
             {viewer}
-          </ReactSVGPanZoom>
+          </UncontrolledReactSVGPanZoom>
         ))}
       </AutoSizer>
     </div>

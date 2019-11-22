@@ -18,7 +18,7 @@ class Sticky extends Model {
       case ADD_STICKY:
         Sticky.create({
           id: payload.id || v4(),
-          title: payload.title || '',
+          name: payload.name || '',
           content: payload.content || '',
           x: payload.x || 0,
           y: payload.y || 0,
@@ -32,13 +32,14 @@ class Sticky extends Model {
       case REMOVE_STICKY:
         Sticky.withId(payload.id).delete();
         break;
+      default: 
+        return undefined;
     }
-    return undefined;
   }
 }
 Sticky.modelName = 'Sticky';
 Sticky.fields = {
-  title: attr(),
+  name: attr(),
   x: attr(),
   y: attr(),
   content: attr(),
