@@ -11,9 +11,9 @@ import {
 } from '../actions/actionTypes';
 
 const EMPTY_SELECTION = {
-  links: null,
-  nodes: null,
-  stickies: null,
+  link: null,
+  node: null,
+  sticky: null,
 };
 const INITIAL_STATE = {
   hoveredPort: null,
@@ -35,7 +35,7 @@ export default function scene(state = INITIAL_STATE, action) {
     case ADD_NODE:
       return {
         ...state,
-        selection: {nodes: [payload.id], links: null, stickies: null},
+        selection: {...EMPTY_SELECTION, node: [payload.id]},
       };
     case HOVER_PORT:
       return {
@@ -52,35 +52,14 @@ export default function scene(state = INITIAL_STATE, action) {
         selection: EMPTY_SELECTION,
       };
     case CLICK_ITEM:
-      const selection = {
-        stickies:
-          payload.item === 'sticky' &&
-          !(
-            state.selection.stickies &&
-            state.selection.stickies.includes(payload.id) &&
-            state.selection.stickies.length == 1
-          )
-            ? [payload.id]
-            : null,
-        nodes:
-          payload.item === 'node' &&
-          !(
-            state.selection.nodes &&
-            state.selection.nodes.includes(payload.id) &&
-            state.selection.nodes.length == 1
-          )
-            ? [payload.id]
-            : null,
-        links:
-          payload.item === 'link' &&
-          !(
-            state.selection.links &&
-            state.selection.links.includes(payload.id) &&
-            state.selection.links.length == 1
-          )
-            ? [payload.id]
-            : null,
-      };
+      const selection = {};
+      Object.keys(state.selection).forEach((key) => {
+        selection[key] = payload.type === key && !(
+            state.selection[key] &&
+            state.selection[key].includes(payload.id) &&
+            state.selection[key].length == 1
+          ) ? [payload.id] : null
+      });
       return {...state, selection};
     default:
       return state;

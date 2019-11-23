@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 import Parameter from './parameter';
-import Tooltip from './tooltip';
 
 import "../scss/unselectable.scss";
 
@@ -9,10 +8,10 @@ const Node = (props) => {
   
   const {id, name, x, y, width, colour,
     scale,
-    // selectedNodes,
+    selected,
     ports,
     updateNode,
-    clickItem 
+    onClick 
   } = props;
 
   const [dragging, setDragging] = useState(false);
@@ -52,10 +51,10 @@ const Node = (props) => {
   return (
     <g 
       transform={`translate(${x},${y})`}
-      onClick={() => clickItem(id, 'node')}
+      onClick={() => {if(!onClick) return; onClick(id, 'node')}}
       onMouseEnter={() => setHover(true)} 
       onMouseLeave={() => {setHover(false); endDrag()}}
-      onMouseDown={() => startDrag()}
+      onMouseDown={() => {if(!startDrag) return; startDrag()}}
       onMouseUp={() => endDrag()}
       onMouseMove={(event) => dragging && drag(event)}
     >
@@ -65,7 +64,7 @@ const Node = (props) => {
         ry={6}
         width={`${width}px`}
         height={initialHeight + portHeight * (ports && ports.length)}
-        filter={hovered ? "url(#selection-glow)": ""}
+        filter={selected || hovered ? "url(#selection-glow)": ""}
         // filter={
         //   selectedNodes && selectedNodes.includes(id)
         //     ? 'url(#selection-glow)'
@@ -83,7 +82,6 @@ const Node = (props) => {
         {name}
       </text>
       {portBlock}
-      {/* {hovered && <Tooltip ports={ports} />} */}
     </g>
   );
 }

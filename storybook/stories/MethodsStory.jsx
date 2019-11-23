@@ -116,7 +116,7 @@ const MethodsStory = () => {
           width={300}
           height={300}
           layout={layoutState}
-
+          dispatch={dispatch}
           //optional:
           ref={viewerRef}
 

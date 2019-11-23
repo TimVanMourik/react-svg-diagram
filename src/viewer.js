@@ -8,7 +8,7 @@ import {BackgroundDefs, Background} from './components/background';
 import Items from './components/items';
 import {svgElementToFile} from './utils/saveToImage';
 
-const ReactSVGDiagram = forwardRef(({ background, defs, x, y, width, height, layout }, Viewer) => {
+const ReactSVGDiagram = forwardRef(({background, defs, x, y, width, height, layout, dispatch}, Viewer) => {
   const svgRef = useRef(null);
   const viewerRef = useRef(null);
 
@@ -36,7 +36,7 @@ const ReactSVGDiagram = forwardRef(({ background, defs, x, y, width, height, lay
           className="entities" 
           // ref={(el) => (this.entities = el)}
         >
-          <Items layout={layout}/>
+          <Items layout={layout} dispatch={dispatch} />
         </g>
       </g>
     </svg>

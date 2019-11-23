@@ -6,7 +6,7 @@ import Sticky from './sticky';
 import Node from './node';
 
 const orm = new ORM({
-  stateSelector: state => state,
+  stateSelector: state => state.orm,
 });
 orm.register(Link, Port, Node, Sticky);
 

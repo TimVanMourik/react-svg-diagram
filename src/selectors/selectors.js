@@ -12,6 +12,7 @@ export const selectNodesWithPorts = createSelector(orm, (session) => session
 );
 export const selectLinks = createSelector(orm.Link);
 
+
 export const nodes = createSelector(
     orm,
     (state) => state.orm,
